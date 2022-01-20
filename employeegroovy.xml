@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="132ba4e2-84f5-4a79-a6bf-e44a1fb6cfa2" created="3.10.1" activeEnvironment="Default environment" name="empgroovy" updated="3.10.1 2021-10-13T15:50:30Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="c0a18fe1-5c92-4d24-bbb0-f09e97c5d357" name="EMPLOYEE" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="EMPLOYEE.json">
+      <con:part>
+        <con:url>EMPLOYEE.json</con:url>
+        <con:content>{"openapi":"3.0.1","info":{"title":"EMPLOYEE","version":"1.0.0"},"servers":[{"url":"/"}],"paths":{"/users":{"get":{"responses":{"default":{"description":"Default response"}}},"post":{"requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}}}}}</con:content>
+        <con:type>https://swagger.io/openapiv3/specification</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>https://jsonplaceholder.typicode.com</con:endpoint>
+    </con:endpoints>
+    <con:resource name="users" path="/users" id="201744df-08b3-4572-8dd2-973fc6145f93">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Method 1" id="2db3b7b0-d09c-427c-b489-2daad021cbf4" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="addEmployee" id="f1394ffa-60fe-4f99-8824-8b93f47c3af8" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>https://jsonplaceholder.typicode.com</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+      <con:method name="Method 2" id="3c570ec6-4dee-4e5f-a548-8c09519ed08d" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="getEmployee" id="9bad89b3-5398-450d-a7ad-416a88d809f0" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>https://jsonplaceholder.typicode.com</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="644fcf93-b019-4e88-b820-8f624e1d3885" name="EmployeeSuite">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="22ea5385-141f-4989-8b62-5d6f9d910883" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Employees" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="properties" name="EmployeeData" id="f8a8de3c-d414-481c-8b59-97d97b88c990">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>emp_id</con:name>
+              <con:value>1</con:value>
+            </con:property>
+            <con:property>
+              <con:name>emp_name</con:name>
+              <con:value>Krishna Rungta</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="addEmployee" id="6f4bba8a-cdad-47fa-b49b-a5e0b91926a8">
+        <con:settings/>
+        <con:config service="EMPLOYEE" resourcePath="/users" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="addEmployee" id="f1394ffa-60fe-4f99-8824-8b93f47c3af8" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>https://jsonplaceholder.typicode.com</con:endpoint>
+            <con:request>[
+    {
+        "id": ${getEmployee#Response#$[0]['id']},
+        "name": "Krishna Rungta",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874",
+            "geo": {
+                "lat": "-37.3159",
+                "lng": "81.1496"
+            }
+        },
+        "phone": "1-770-736-8031 x56442",
+        "website": "hildegard.org",
+        "company": {
+            "name": "Romaguera-Crona",
+            "catchPhrase": "Multi-layered client-server neural-net",
+            "bs": "harness real-time e-markets"
+        }
+    }
+]</con:request>
+            <con:originalUri>https://jsonplaceholder.typicode.com/users</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="8256f1bf-fe12-4a96-b23f-a9f76984f0c7" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="3ec2d2c1-6b49-4450-aa53-f0ef8e15e83d" name="Contains">
+              <con:configuration>
+                <token>id</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="setData" id="20b40543-359f-46f6-945b-3aec24ec0c5f">
+        <con:settings/>
+        <con:config>
+          <script>//fetch the emp id and set it in data
+def emp_id = context.expand( '${getEmployee#Response#$[0][\'id\']}' )
+
+log.info emp_id
+
+def data = testRunner.testCase.testSteps["EmployeeData"]
+data.setPropertyValue("emp_id",emp_id)
+
+//fetch name and add it to test data
+def emp_name = context.expand( '${addEmployee#Response#$[\'0\'][\'name\']}' )
+log.info emp_name
+
+//def data = testRunner.testCase.testSteps["EmployeeData"]
+data.setPropertyValue("emp_name",emp_name)</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="getEmployee" id="bf896a2d-8a0e-4b23-a241-31088c76214f">
+        <con:settings/>
+        <con:config service="EMPLOYEE" resourcePath="/users" methodName="Method 2" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="getEmployee" id="9bad89b3-5398-450d-a7ad-416a88d809f0" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>https://jsonplaceholder.typicode.com</con:endpoint>
+            <con:request/>
+            <con:originalUri>https://jsonplaceholder.typicode.com/users</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="4c596aed-588b-4bdc-a80a-83d0837ac72f" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="94e6db08-8dfa-4256-a8f7-739c2efe3ced" name="Response SLA">
+              <con:configuration>
+                <SLA>1000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="1929d176-9046-4b9d-ad04-0347e500f4de" name="Contains">
+              <con:configuration>
+                <token>id</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="807cb3e8-4d85-4bb2-8249-27e17ff11bbd" name="Contains 2">
+              <con:configuration>
+                <token>Bret</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple NotContains" id="0439b4be-04b2-4e98-8ce3-8e79c1471831" name="Not Contains">
+              <con:configuration>
+                <token>Brad</token>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to ReadyAPI functional tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>
